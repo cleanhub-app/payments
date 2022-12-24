@@ -10,13 +10,28 @@
 
 <a href = "success.html">Success page</a><br/>
 <a href = "error.html">Error page</a><br/>
-<button onclick="sendSuccessCallback()">Success request</button><br/>
+<button onclick="sendSuccessCallback()">Success request</button><br/><br/>
+<button onclick="sendSuccessCallbackDev()">Success request API-DEV</button><br/><br/>
+<button onclick="sendSuccessCallbackProd()">Success request production</button><br/><br/>
 <script>
     function sendSuccessCallback() {
         var query = window.location;
         var url = new URL(query);
         var orderId = url.searchParams.get("orderId");
         window.location.assign("http://0.0.0.0:8080/payments/callback/" + orderId);
+    }
+
+    function sendSuccessCallbackDev() {
+        var query = window.location;
+        var url = new URL(query);
+        var orderId = url.searchParams.get("orderId");
+        window.location.assign("https://api-dev.cleanhub.app/payments/callback/" + orderId);
+    }
+    function sendSuccessCallbackProd() {
+        var query = window.location;
+        var url = new URL(query);
+        var orderId = url.searchParams.get("orderId");
+        window.location.assign("https://api.cleanhub.app/payments/callback/" + orderId);
     }
 </script>
 
